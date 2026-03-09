@@ -14,7 +14,7 @@ export default function Footer() {
       <div className={styles.top}>
         <div className={styles.brand}>
           <div className={styles.logo}>
-            <img src="./logov.png" alt="The Velvet Studio" className={styles.logoImg} />
+            <img src="/logov.png" alt="The Velvet Studio" className={styles.logoImg} />
           </div>
           <p className={styles.brandDesc}>
             Premium makeup artistry for your most beautiful moments.
