@@ -1,0 +1,194 @@
+.booking {
+  position: relative;
+  padding: var(--section-pad);
+  overflow: hidden;
+}
+
+.bgImage {
+  position: absolute;
+  inset: 0;
+  background-image: url('');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  filter: saturate(0.4);
+}
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(8,8,8,0.92);
+}
+
+.inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.header.visible { opacity: 1; transform: translateY(0); }
+
+.heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+.heading em { color: var(--gold); font-style: italic; }
+.sub { color: var(--text-muted); font-size: 0.88rem; font-weight: 300; max-width: 520px; margin: 0 auto; line-height: 1.8; }
+
+/* Contact Grid */
+.contactGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 48px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+}
+.contactGrid.formVisible { opacity: 1; transform: translateY(0); }
+
+.contactCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 32px 28px;
+  border: 1px solid rgba(201,169,110,0.15);
+  background: rgba(17,17,17,0.9);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.contactCard::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+  transform-origin: left;
+}
+.contactCard:hover {
+  border-color: rgba(201,169,110,0.35);
+  background: rgba(201,169,110,0.05);
+  transform: translateY(-3px);
+}
+.contactCard:hover::after { transform: scaleX(1); }
+
+.waCard::after { background: #25D366; }
+.waCard .cardIcon { color: #25D366; }
+.waCard:hover { border-color: rgba(37,211,102,0.3) !important; }
+
+.igCard::after { background: linear-gradient(90deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+.igCard .cardIcon { color: var(--gold); }
+
+.phoneCard::after { background: var(--gold); }
+.phoneCard .cardIcon { color: var(--gold); }
+
+.addressCard { cursor: default; }
+.addressCard::after { background: var(--blush); }
+.addressCard .cardIcon { color: var(--blush); }
+
+.cardIcon {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(201,169,110,0.15);
+}
+
+.cardContent { flex: 1; }
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.cardDesc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 300;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.cardAction {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-family: var(--font-body);
+  font-weight: 500;
+  display: inline-block;
+  transition: letter-spacing 0.3s ease;
+  text-decoration: none;
+}
+.contactCard:hover .cardAction {
+  letter-spacing: 0.28em;
+}
+
+/* Big CTA */
+.bigCta {
+  text-align: center;
+  padding: 48px 40px;
+  border: 1px solid rgba(201,169,110,0.15);
+  background: rgba(17,17,17,0.6);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s;
+}
+.bigCta.visible { opacity: 1; transform: translateY(0); }
+
+.bigCtaText {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--nude);
+  margin-bottom: 28px;
+}
+
+.bigCtaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dim));
+  color: var(--black);
+  padding: 18px 44px;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+.bigCtaBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(201,169,110,0.25);
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+}
+
+@media (max-width: 700px) {
+  .contactGrid { grid-template-columns: 1fr; }
+  .bigCta { padding: 32px 20px; }
+}

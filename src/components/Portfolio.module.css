@@ -1,0 +1,274 @@
+.portfolio {
+  padding: var(--section-pad);
+  background: var(--deep);
+  position: relative;
+}
+
+.inner {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 50px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.header.visible { opacity: 1; transform: translateY(0); }
+
+.heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+.heading em { color: var(--gold); font-style: italic; }
+.sub { color: var(--text-muted); font-size: 0.9rem; font-weight: 300; }
+
+/* Filters */
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+.filter {
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 8px 20px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--font-body);
+}
+.filter:hover {
+  color: var(--gold);
+  border-color: rgba(201,169,110,0.3);
+}
+.filterActive {
+  color: var(--black) !important;
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 60px;
+}
+
+.item {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  cursor: pointer;
+  background: var(--charcoal);
+  animation: fadeIn 0.5s ease both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.tall {
+  grid-row: span 1;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+  filter: saturate(0.85);
+}
+.item:hover .img {
+  transform: scale(1.08);
+  filter: saturate(1.1);
+}
+
+.itemOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(8,8,8,0.85) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.item:hover .itemOverlay {
+  opacity: 1;
+}
+
+.itemCat {
+  font-size: 0.62rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+}
+
+.viewIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(201,169,110,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-size: 1.5rem;
+  font-weight: 200;
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+}
+.item:hover .viewIcon {
+  opacity: 1;
+}
+
+/* Instagram CTA */
+.igCta {
+  text-align: center;
+  padding: 40px;
+  border: 1px solid rgba(201,169,110,0.15);
+}
+.igText {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+.igBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--gold);
+  border: 1px solid rgba(201,169,110,0.4);
+  padding: 12px 28px;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-family: var(--font-body);
+  transition: all 0.3s ease;
+}
+.igBtn:hover {
+  background: rgba(201,169,110,0.08);
+  border-color: var(--gold);
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  backdrop-filter: blur(10px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+}
+.lightboxClose {
+  position: fixed;
+  top: 24px;
+  right: 32px;
+  font-size: 2rem;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 2001;
+  transition: color 0.2s;
+  font-family: serif;
+  line-height: 1;
+}
+.lightboxClose:hover { color: var(--gold); }
+.lightboxContent {
+  max-width: 700px;
+  width: 90%;
+}
+.lightboxImg {
+  width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+}
+.lightboxMeta {
+  padding: 16px 0;
+  border-top: 1px solid rgba(201,169,110,0.15);
+  margin-top: 12px;
+}
+.lightboxCat {
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 4px;
+}
+.lightboxAlt {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+  .grid { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+}
+@media (max-width: 460px) {
+  .grid { grid-template-columns: 1fr 1fr; }
+}
+
+
+.slider {
+  margin-bottom: 60px;
+}
+
+.slider .swiper-slide {
+  height: auto;
+}
+
+.item {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  border-radius: 4px;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.item:hover .img {
+  transform: scale(1.06);
+}
+
+.swiper-slide {
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  opacity: 0.5;
+  transform: scale(0.9);
+}
+
+.swiper-slide-active {
+  opacity: 1;
+  transform: scale(1);
+}
