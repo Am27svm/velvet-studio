@@ -17,7 +17,7 @@
 .bgImage {
   position: absolute;
   inset: -20%;
-  background-image: url('gallery/studio/studio.jpeg');
+  background-image: url('/gallery/studio/studio.jpeg');
   background-size: cover;
   background-position: center 20%;
   filter: saturate(0.6);
